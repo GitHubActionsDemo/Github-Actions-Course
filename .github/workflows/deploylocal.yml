@@ -1,0 +1,44 @@
+name: download artifacts trial locally
+
+on:
+ pull_request:
+  branches: main
+  
+jobs:
+
+ buildartifacts:
+  runs-on: ubuntu-latest
+  
+  strategy:
+      matrix:
+        node-version: [16.x]
+        
+  steps:
+    - uses: actions/checkout@v3
+    
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    - run: npm ci
+    - run: npm run build --if-present
+    
+    - uses: actions/upload-artifact@v3.1.2
+      with:
+       name: Connectors-3.5.0
+       path: public/
+       
+ testartifacts:
+ 
+  needs: buildartifacts
+  runs-on: ubuntu-latest
+  environment: Dev
+        
+  steps:
+    - uses: actions/checkout@v3 
+    - run: mkdir Artifacts v3.5.0
+    - uses: actions/download-artifact@v3.0.2
+      with:
+       name: Connectors-3.5.0
+       path: environment.secrets.Server
