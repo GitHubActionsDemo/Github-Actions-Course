@@ -23,7 +23,7 @@ jobs:
     - run: npm ci
     - run: npm run build --if-present
     
-    - uses: actions/upload-artifacts@v3
+    - uses: actions/upload-artifact@v3.1.2
       with:
        name: Connectors-3.5.0
        path: .
