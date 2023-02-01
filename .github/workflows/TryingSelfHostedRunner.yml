@@ -39,8 +39,8 @@ jobs:
    steps:
     - uses: actions/checkout@v3 
     - shell: cmd
-      run: mkdir Artifacts
+      run: mkdir Artifactsv3.5.0
     - uses: actions/download-artifact@v3.0.2
       with:
        name: Connectors-3.5.0
-       path: Artifacts
+       path: Artifactsv3.5.0
