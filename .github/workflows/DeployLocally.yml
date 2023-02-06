@@ -40,7 +40,9 @@ jobs:
   environment: Dev
         
   steps:
+    - run: echo "$environment.Path"
+    - run: echo "$vars.Path"
     - uses: actions/download-artifact@v3.0.2
       with:
        name: Artifacts
-       path: ${{ environment.Path }}
+     
