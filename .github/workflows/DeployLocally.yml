@@ -1,7 +1,7 @@
 name: DeployArtifactsOnLocalEnvironments
+
 on:
- pull_request:
-  branches: main
+ workflow_dispatch
   
 jobs:
 
@@ -40,10 +40,16 @@ jobs:
   environment: Dev
         
   steps:
-  
-    - run: echo hello world
-    - run: echo "$environment.Path"
-    - run: echo "$vars.Path"
+ 
+    - shell: cmd
+      run: echo hello world
+      
+    - shell: cmd 
+      run: echo "$environment.Path"
+      
+    - shell:cmd
+      run: echo "$vars.Path"
+      
     - uses: actions/download-artifact@v3.0.2
       with:
        name: Artifacts
