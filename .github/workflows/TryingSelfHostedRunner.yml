@@ -1,7 +1,6 @@
 name: Trying Self hosted runner trial 2
 on:
-  pull_request:
-    branches: [ "main" ]
+  workflow_dispatch
 
 jobs:
   build:
