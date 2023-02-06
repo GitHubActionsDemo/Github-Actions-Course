@@ -1,0 +1,56 @@
+name: DeployArtifactsOnLocalEnvironments
+
+on:
+ workflow_dispatch
+  
+jobs:
+
+ buildartifacts:
+ 
+  runs-on: [self-hosted, windows, x64]
+  
+  strategy:
+      matrix:
+        node-version: [16.x]
+        
+  steps:
+    - uses: actions/checkout@v3
+    
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    - shell: cmd
+      run: npm ci
+    - shell: cmd
+      run: npm run build --if-present
+    
+    - uses: actions/upload-artifact@v3.1.2
+      with:
+       name: Artifacts
+       path: public/
+       
+ testartifacts:
+ 
+  needs: buildartifacts
+  
+  runs-on: [self-hosted, windows, x64]
+  
+  environment: Dev
+        
+  steps:
+ 
+    - shell: cmd
+      run: echo hello world
+      
+    - shell: cmd 
+      run: echo "$environment.Path"
+      
+    - shell:cmd
+      run: echo "$vars.Path"
+      
+    - uses: actions/download-artifact@v3.0.2
+      with:
+       name: Artifacts
+     
