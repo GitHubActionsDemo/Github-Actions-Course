@@ -47,9 +47,6 @@ jobs:
     - shell: cmd 
       run: echo "$environment.Path"
       
-    - shell:cmd
-      run: echo "$vars.Path"
-      
     - uses: actions/download-artifact@v3.0.2
       with:
        name: Artifacts
