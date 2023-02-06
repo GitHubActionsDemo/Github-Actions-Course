@@ -40,6 +40,8 @@ jobs:
   environment: Dev
         
   steps:
+  
+    - run: echo hello world
     - run: echo "$environment.Path"
     - run: echo "$vars.Path"
     - uses: actions/download-artifact@v3.0.2
