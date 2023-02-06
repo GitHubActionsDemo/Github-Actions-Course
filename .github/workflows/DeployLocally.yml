@@ -45,7 +45,7 @@ jobs:
       run: echo hello world
       
     - shell: cmd 
-      run: echo "Environment path is ${{ environment.Path }}"
+      run: echo "Environment path is ${{ Path }}"
       
     - uses: actions/download-artifact@v3.0.2
       with:
