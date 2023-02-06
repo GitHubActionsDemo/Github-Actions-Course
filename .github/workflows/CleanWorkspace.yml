@@ -1,0 +1,19 @@
+name: Test Cleaning the workspace
+
+on:
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: [self-hosted, windows, x64]
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+        
+
+    steps:
+    - uses: actions/checkout@v3
+    
