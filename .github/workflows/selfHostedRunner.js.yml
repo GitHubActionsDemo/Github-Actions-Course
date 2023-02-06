@@ -4,8 +4,7 @@
 name: Build the project on self-hosted runner
 
 on:
-  pull_request:
-    branches: [ "main" ]
+  workflow_dispatch
 
 jobs:
   build:
