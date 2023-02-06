@@ -16,6 +16,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - shell: cmd
-      run: mkdir Artifacts
+    - shell: powershell
+      run: mkdir Artifacts2
     
