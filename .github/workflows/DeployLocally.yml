@@ -45,7 +45,7 @@ jobs:
       run: echo hello world
       
     - shell: cmd 
-      run: echo "Environment path is ${{ vars.Path }}"
+      run: echo "Environment is ${{ vars.Path }}"
       
     - shell: cmd
       run: echo "Variable is ${{ vars.VARIABLE }}"
